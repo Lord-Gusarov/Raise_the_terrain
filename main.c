@@ -1,13 +1,10 @@
-#include <SDL2/SDL.h>
+#include "demo.h"
 
 int main(void)
 {
-	SDL_Window *window;
-	SDL_Renderer *renderer;
+	SDL_Instance instance;
 
-	/*Initiate SDL*/
-	if (SDL_Init(SDL_INIT_VIDEO) != 0)
-	{
-		fprint(stderr, "Unable to initialize SDL:  %s\n", SDL_GetError());
+	if (init_instance(&instance) != 0)
 		return (1);
-	}
+	return (0);
+}
