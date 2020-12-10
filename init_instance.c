@@ -5,7 +5,7 @@ int init_instance(SDL_Instance *instance)
 	/*Initiate SDL*/
 	if (SDL_Init(SDL_INIT_VIDEO) != 0)
 	{
-		fprint(stderr, "Unable to initialize SDL:  %s\n", SDL_GetError());
+		fprintf(stderr, "Unable to initialize SDL:  %s\n", SDL_GetError());
 		return (1);
 	}
 	/*Create a new Window instance */
@@ -13,7 +13,7 @@ int init_instance(SDL_Instance *instance)
 			SDL_WINDOWPOS_CENTERED, 1260, 720, 0);
 	if (instance->window == NULL)
 	{
-		fprint(stderr, "SDL_CreateWindow Error: %s\n", SDL_GetError());
+		fprintf(stderr, "SDL_CreateWindow Error: %s\n", SDL_GetError());
 		SDL_Quit();
 		return (1);
 	}
@@ -23,7 +23,7 @@ int init_instance(SDL_Instance *instance)
 	if (instance->renderer == NULL)
 	{
 		SDL_DestroyWindow(instance->window);
-		fprint(stderr, "SDL_CreateRenderer Error: %s\n", SDL_GetError());
+		fprintf(stderr, "SDL_CreateRenderer Error: %s\n", SDL_GetError());
 		SDL_Quit();
 		return (1);
 	}
