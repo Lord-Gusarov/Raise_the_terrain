@@ -8,19 +8,25 @@ int main(void)
 		return (1);
 
 	/*
-	 * C will always be awesome
 	 * This is an infinite loop
 	 */
 	while ("C is awesome")
 	{
 		SDL_SetRenderDrawColor(instance.renderer, 0, 0, 0, 0);
 		SDL_RenderClear(instance.renderer);
-		/*
-		 * Draw some stuff here
-		 */
+		if (poll_events() == 1)
+			break;
+		/* Draw some stuff here */
 		draw_stuff(instance);
 		/*===================*/
 		SDL_RenderPresent(instance.renderer);
 	}
+
+	/*Release/free all*/
+	SDL_DestroyRenderer(instance.renderer);
+	SDL_DestroyWindow(instance.window);
+	SDL_Quit();
+	/*==================*/
+
 	return (0);
 }
